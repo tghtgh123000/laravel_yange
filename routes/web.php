@@ -49,3 +49,9 @@ Route::get('/dev/table/{table}' , function($table){
     }
     return;
 });
+
+Route::group(['prefix' => 'yg'] , function (){
+    Route::group(['prefix' => 'public'], function(){
+        Route::any('swagger' , 'Yg\PublicController@swagger');
+    });
+});

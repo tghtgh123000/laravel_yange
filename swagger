@@ -1,0 +1,2 @@
+cd /coding.net/laravel_yange &&
+php vendor/zircote/swagger-php/bin/swagger app/Http/Controllers/ -o /coding.net/swagger-ui/docs/yange.json;

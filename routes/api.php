@@ -13,6 +13,21 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+Route::group(['prefix' => 'yg'], function () {
+    Route::group(['prefix' => 'user'], function () {
+        $addActions = function ($actions) {
+            foreach ($actions as $action => $v){
+                Route::any($action, 'Yg\UserController@' . $action);
+            }
+        };
+        $actions = [
+
+        ];
+
+        $addActions($actions);
+    });
 });
