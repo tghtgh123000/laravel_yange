@@ -163,4 +163,136 @@ class MaterialController extends Controller
     public function getCategorys(){
 
     }
+    /**
+     * @SWG\POST(
+     *     tags={"Material:素材"},
+     *     path="/api/yg/material/download",
+     *     summary="下载素材",
+     *     description="",
+     *     @SWG\Parameter(
+     *          name="data",
+     *          in="body",
+     *          required="true",
+     *          @SWG\Schema(
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="object",
+     *
+     *              ),
+     *
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *         response=200,
+     *         description="成功"
+     *      ),
+     * )
+     *
+     */
+    public function download(){
+
+    }
+    /**
+     * @SWG\POST(
+     *     tags={"Material:素材"},
+     *     path="/api/yg/material/collect",
+     *     summary="收藏素材",
+     *     description="",
+     *     @SWG\Parameter(
+     *          name="data",
+     *          in="body",
+     *          required="true",
+     *          @SWG\Schema(
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="object",
+     *
+     *              ),
+     *
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *         response=200,
+     *         description="成功"
+     *      ),
+     * )
+     *
+     */
+    public function collect(){
+
+    }
+    /**
+     * @SWG\POST(
+     *     tags={"Material:素材"},
+     *     path="/api/yg/material/getDetail",
+     *     summary="获取素材详情",
+     *     description="",
+     *     @SWG\Parameter(
+     *          name="data",
+     *          in="body",
+     *          required="true",
+     *          @SWG\Schema(
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="object",
+     *
+     *              ),
+     *
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *         response=200,
+     *         description="成功"
+     *      ),
+     * )
+     *
+     */
+    public function getDetail(){
+
+    }
+    /**
+     * @SWG\POST(
+     *     tags={"Material:素材"},
+     *     path="/api/yg/material/getList",
+     *     summary="获取素材列表",
+     *     description="",
+     *     @SWG\Parameter(
+     *          name="data",
+     *          in="body",
+     *          required="true",
+     *          @SWG\Schema(
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="object",
+     *
+     *              ),
+     *     @SWG\Property(
+     *                      property="pageInfo",
+     *                      type="object",
+     *                      description="",
+     *                      @SWG\Property(
+     *                          property="pageId",
+     *                          type="string",
+     *                          description="",
+     *                      ),
+     *                      @SWG\Property(
+     *                          property="pageSize",
+     *                          type="string",
+     *                          description="",
+     *                      ),
+     *                  ),
+     *
+     *          ),
+     *
+     *      ),
+     *      @SWG\Response(
+     *         response=200,
+     *         description="成功"
+     *      ),
+     * )
+     *
+     */
+    public function getList(){
+
+    }
 }
