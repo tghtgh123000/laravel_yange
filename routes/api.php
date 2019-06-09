@@ -20,11 +20,14 @@ use Illuminate\Http\Request;
 Route::group(['prefix' => 'yg'], function () {
     Route::group(['prefix' => 'user'], function () {
         $addActions = function ($actions) {
-            foreach ($actions as $action => $v){
-                Route::any($action, 'Yg\UserController@' . $action);
+            foreach ($actions as $controller => $actions){
+                foreach ($actions as $action)Route::any($action, 'Yg\\'.$controller.'Controller@' . $action);
             }
         };
         $actions = [
+            'User' => [
+                'sendSmsCode',//发送验证码
+            ]
 
         ];
 

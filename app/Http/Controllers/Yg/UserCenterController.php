@@ -251,4 +251,35 @@ class UserCenterController extends Controller
     public function getMyFollows(){
 
     }
+
+    /**
+     * @SWG\PUT(
+     *     tags={"UserCenter:用户中心"},
+     *     path="/api/yg/userCenter/follow",
+     *     summary="关注作者",
+     *     description="",
+     *     @SWG\Parameter(
+     *          name="data",
+     *          in="body",
+     *          required="true",
+     *          @SWG\Schema(
+     *              name="data",
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="object",
+     *
+     *              ),
+     *
+     *          ),
+     *     ),
+     *      @SWG\Response(
+     *         response=200,
+     *         description="成功"
+     *      ),
+     * )
+     *
+     */
+    public function follow(){
+
+    }
 }

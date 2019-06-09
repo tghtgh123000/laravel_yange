@@ -38,7 +38,8 @@ class UserController extends Controller
      *                  type="object",
      *                  @SWG\Property(
      *                      property="phone",
-     *                      type="string"
+     *                      type="string",
+     *                      defaultValue="13205280001",
      *                  ),
      *                  @SWG\Property(
      *                      property="type",
