@@ -74,6 +74,14 @@ class SmsService implements SmsContract
         ]);
     }
 
+    /**
+     * 校验验证码 TODO: 次数限制
+     *
+     * @param $phone
+     * @param $code
+     * @return array
+     * @throws ErrorException
+     */
     public function checkRegisterCode($phone , $code)
     {
         $key = $this->getRegisterCodeKey($phone);
@@ -81,10 +89,10 @@ class SmsService implements SmsContract
             return ResultTool::resErr('请先获取验证码' , 10001);
         }
 
-        if(!empty($code) && $code == Redis::get($key)){
+        if (!empty($code) && $code == Redis::get($key)) {
             return ResultTool::resOk();
-        }else{
-            return ResultTool::resErr('验证码错误' , 10002);
+        } else {
+            return ResultTool::resErr('验证码错误', 10002);
         }
     }
 

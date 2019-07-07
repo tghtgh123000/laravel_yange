@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 //    return $request->user();
 //});
 
-Route::group(['prefix' => 'yg'], function () {
+Route::group(['prefix' => 'yg', 'middleware' => ['web']], function () {
     Route::group(['prefix' => 'user'], function () {
         $addActions = function ($actions) {
             foreach ($actions as $controller => $actions){
@@ -27,6 +27,25 @@ Route::group(['prefix' => 'yg'], function () {
         $actions = [
             'User' => [
                 'sendSmsCode',//发送验证码
+                'checkSlideCode',
+                'register',
+                'setPwd'
+            ]
+
+        ];
+
+        $addActions($actions);
+    });
+
+    Route::group(['prefix' => 'public'], function () {
+        $addActions = function ($actions) {
+            foreach ($actions as $controller => $actions){
+                foreach ($actions as $action)Route::any($action, 'Yg\\'.$controller.'Controller@' . $action);
+            }
+        };
+        $actions = [
+            'Public' => [
+                'getProProcess',//发送验证码
             ]
 
         ];

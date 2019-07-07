@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Yg;
 
 use App\Http\Controllers\Controller;
+use Beast\EasyGeetest\EasyGeetest;
+use Illuminate\Http\Request;
+use Session;
 
 class PublicController extends Controller
 {
@@ -203,5 +206,54 @@ class PublicController extends Controller
      */
     public function getFriendLinks(){
 
+    }
+    /**
+     * @SWG\Post(
+     *     tags={"User:用户操作"},
+     *     path="/api/yg/public/getProProcess",
+     *     summary="滑动验证码预处理",
+     *     @SWG\Parameter(
+     *          name="data",
+     *          in="body",
+     *          required="true",
+     *          @SWG\Schema(
+     *              name="data",
+     *              @SWG\Property(
+     *                  required={"phone"},
+     *                  property="data",
+     *                  type="object",
+     *                  @SWG\Property(
+     *                      property="phone",
+     *                      type="string"
+     *                       ),
+     *              ),
+     *          )
+     *      ),
+     *      @SWG\Response(
+     *         response=200,
+     *         description="成功"
+     *      ),
+     * )
+     *
+     */
+    public function getProProcess(Request $request)
+    {
+        $phone = $request->get('phone');
+
+        $gtSdk = new EasyGeetest(array(
+            'captcha_id' => config('geetest.id'),
+            'private_key' => config('geetest.key')
+        ));
+        $data = array(
+            "user_id" => $phone, # 网站用户id
+            "client_type" => "web", #web:电脑上的浏览器；h5:手机上的浏览器，包括移动应用内完全内置的web_view；native：通过原生SDK植入APP应用的方式
+            "ip_address" => $request->getClientIp() # 请在此处传输用户请求验证时所携带的IP
+        );
+        $status = $gtSdk->proProcess($data, 1);
+        Session::put('gtserver', $status);
+        Session::put('user_id', $data['user_id']);
+        $response = $gtSdk->getResponse();
+
+        return $this->returnOK($response);
     }
 }
