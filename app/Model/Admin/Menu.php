@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
-    protected $table = 'yg_admin_menu';
+    protected $table = 'admin_menu';
 
     /**
      * 获取菜单列表

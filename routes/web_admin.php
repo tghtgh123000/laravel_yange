@@ -11,8 +11,20 @@
 |
 */
 
-Route::group(['prefix' => 'admin'] , function (){
-    Route::group(['prefix' => 'index'], function(){
+Route::group([
+    'prefix' => 'admin',
+    'middleware' => 'admin',
+] , function (){
+
+    Route::group([
+        'prefix' => 'index',
+        'middleware' => 'admin_auth',
+    ], function(){
         Route::any('index' , 'Admin\IndexController@indexAction');
     });
+
+    Route::group(['prefix' => 'public'], function(){
+        Route::any('login' , 'Admin\PublicController@loginAction')->name('login');
+    });
+
 });

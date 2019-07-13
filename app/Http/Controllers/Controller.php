@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -18,11 +19,14 @@ class Controller extends BaseController
 
     protected $inputData;
 
-    public function __construct()
+    public function __construct(Request $request)
     {
-        $this->request = \App::make(Request::class);
+        var_log(__CLASS__);
+        $this->request = $request;
         $input = $this->request->input();
         $this->inputData = $input['data'];
+
+//        $this->request->session()->put('password_hash' , '');
     }
 
     /**
